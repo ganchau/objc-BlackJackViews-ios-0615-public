@@ -17,9 +17,6 @@
 
 - (void)updateUI
 {
-    for (UILabel *card in self.cardArray) {
-        card.hidden = YES;
-    }
     for (NSUInteger i = 0; i < self.blackjackGame.hand.count; i++) {
         UILabel *card = self.cardArray[i];
         card.text = [self.blackjackGame.hand[i] description];
@@ -73,6 +70,10 @@
     self.blackjackGame = [[FISBlackjackGame alloc] init];
     self.scoreLabel.text = 0;
     self.resultLabel.text = @"";
+    for (UILabel *card in self.cardArray) {
+        card.text = @"";
+        card.hidden = YES;
+    }
     //self.hitButton.enabled = YES;
     
     [self.blackjackGame deal];
